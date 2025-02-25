@@ -1,0 +1,61 @@
+<ng-container *ngIf="this.userInfoObs | async">
+  <ng-container *ngIf="this.navbarPreferenceObs | async">
+    <ng-container *ngIf="this.headerPreferenceObs | async">
+      <div class="flex flex-col w-full h-full">
+
+        <!--    C L A S S I F I C A T I O N        B A N N E R     (may be 0 or 20px high)  -->
+        <app-classification-banner></app-classification-banner>
+
+
+        <!--    H E A D E R      (will always be 60px high) -->
+        <!-- If you change the header height, you have to change all the images as well and the calculations (DON'T DO IT) -->
+
+
+        <!-- Application Logo -->
+        <div class="relative z-0" style="z-index: 100 !important;">
+          <img class="absolute clickable mt-1" [routerLink]="'/'" src="./assets/images/carousel_logo.png"
+               alt="This is the Logo"
+               style="width: 56px; height: 56px;">
+        </div>
+
+
+        <!-- Header Content -->
+        <div class="flex-none w-full h-[60px]" style="z-index: 0;">
+          <app-header></app-header>
+        </div>
+
+
+        <!-- The "overflow: auto" ensures that the scrollbars appear only in the content window if needed -->
+        <!-- The "h-full"         ensures that the navbar and main viewing area use the FULL HEIGHT of the page -->
+        <div class="flex flex-row h-full w-full" style="overflow:auto">
+
+          <!-- L E F T       S I D E         N A V B A R    -->
+
+          <!-- The flex grow is IMPORTANT - it ensures the highcharts pages respond to navbar resizing events -->
+          <div class="flex flex-grow h-full" role="navigation">
+            <!-- The z-index is VERY IMPORTANT so that the floating menus appear over ALL page content -->
+            <app-navbar-extended style="z-index: 100" [ngClass]="{
+									 'hide-navbar-content': !this.navBarExtended,
+									 'show-navbar-content': this.navBarExtended}">
+            </app-navbar-extended>
+
+            <app-navbar-collapsed style="z-index: 100" [ngClass]="{
+									 'hide-collapsed-navbar-content': this.navBarExtended,
+									 'show-collapsed-navbar-content': !this.navBarExtended}">
+            </app-navbar-collapsed>
+          </div>
+
+
+          <!--  M A I N       V I E W I N G       A R E A  -->
+          <div style="width: 100%; height: 100%; overflow: auto" role="main">
+            <!-- Application Content/Pages -->
+            <router-outlet></router-outlet>
+          </div>
+
+
+        </div>
+
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>

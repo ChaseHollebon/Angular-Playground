@@ -1,0 +1,46 @@
+<form [formGroup]="this.myForm" novalidate autocomplete="off">
+  <div class="m-2.5">
+    <div class="grid grid-cols-2">
+      <div><span class="text-xl">Fake Symbol Lookup</span>
+      </div>
+
+      <div class="flex place-content-end">
+        Help
+      </div>
+    </div>
+
+    <div class="searchBoxWrapper w-[200px] fa-border">
+
+      <!-- Symbol Text Box -->
+      <input formControlName="symbol" matInput type="text" [matAutocomplete]="autocomplete1" title="Symbol" aria-label="Symbol"
+             placeholder="Symbol" id="searchBox">
+
+      <!-- Search Icon -->
+      <span class="searchBoxIcon">
+			<i class="fa fa-search"></i>
+		</span>
+
+      <mat-autocomplete panelWidth="auto" #autocomplete1="matAutocomplete">
+        <ng-container *ngIf="(this.obsSearchMatchesToShow | async) as matches">
+
+          <ng-container *ngFor="let match of matches">
+            <mat-option [value]="match.symbol">
+              <div class="flex flex-row">
+                <div class="w-[80px]">
+                  {{match.symbol}}
+                </div>
+                <div class="flex flex-grow">
+                  {{match.businessName}}
+                </div>
+              </div>
+            </mat-option>
+          </ng-container>
+
+        </ng-container>
+
+      </mat-autocomplete>
+
+    </div>
+
+  </div>
+</form>

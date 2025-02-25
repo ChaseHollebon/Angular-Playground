@@ -1,0 +1,48 @@
+<div class="m-2.5">
+
+  <div class="grid grid-cols-2">
+    <div>
+      <span class="text-xl">Responsive Dashboard Page</span>
+    </div>
+
+    <div class="flex place-content-end">
+      Help
+    </div>
+  </div>
+
+  <div class="mt-2.5">
+    <div class="overflow-y-auto" style="height: calc(100vh - 150px)">
+
+      <div class="flex flex-row flex-wrap gap-x-5 gap-y-5 m-2.5">
+
+        <div class="w-[600px] h-[300px] mat-elevation-z4 p-2.5 cursor-pointer" (click)="this.navigateToPieChartPage()">
+          <app-pie-chart-small class="h-full w-full"></app-pie-chart-small>
+        </div>
+
+        <div class="w-[600px] h-[300px] mat-elevation-z4 p-2.5">
+          <app-line-chart-small class="h-full w-full"></app-line-chart-small>
+        </div>
+
+        <div class="w-[600px] h-[300px] mat-elevation-z4 p-2.5 cursor-pointer" (click)="this.navigateToColumnChartPage()">
+          <app-column-chart-small class="h-full w-full"></app-column-chart-small>
+        </div>
+
+        <div class="w-[600px] h-[300px] mat-elevation-z4 p-2.5 cursor-pointer" (click)="this.navigateToZoomableChartPage()">
+          <app-zoomable-time-series-line-chart-small class="h-full w-full"></app-zoomable-time-series-line-chart-small>
+        </div>
+
+        <div class="w-[600px] h-[300px] mat-elevation-z4 p-2.5 cursor-pointer" (click)="this.navigateToUsaStatesChartPage()">
+          <app-usa-map-small class="h-full w-full"></app-usa-map-small>
+        </div>
+
+        <div class="w-[600px] h-[300px] mat-elevation-z4 p-2.5 cursor-pointer" (click)="this.navigateToGaugeChartPage()">
+          <app-gauge-small class="h-full w-full"></app-gauge-small>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
